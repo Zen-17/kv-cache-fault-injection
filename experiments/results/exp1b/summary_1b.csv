@@ -1,0 +1,4 @@
+injection_step,remaining_tokens,n,tcr,post_injection_tdr,first_divergence_after_injection,collapse_rate
+16,112,90,1.0000,0.9911,1.0000,1.0000
+64,64,90,1.0000,0.9844,1.0000,1.0000
+96,32,90,1.0000,0.9688,1.0000,1.0000

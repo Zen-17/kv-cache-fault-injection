@@ -1,0 +1,5 @@
+# Transient run artifacts (results themselves are committed on purpose).
+*.log
+*.pyc
+__pycache__/
+.DS_Store

@@ -1,0 +1,4 @@
+# Transient run artifacts (kept out of version control; results are committed).
+*.log
+__pycache__/
+*.pyc

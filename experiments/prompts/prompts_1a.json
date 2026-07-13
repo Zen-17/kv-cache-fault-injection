@@ -1,0 +1,125 @@
+{
+  "description": "Long-form generation prompts for experiment 1A/1B (exp_design.md sec. 5.1). 30 prompts, each aiming for >=128 prompt tokens, mixing Chinese and English and covering summarization, background-material QA, multi-step reasoning, code explanation, long system-instruction + user query, writing and knowledge. Full 1A grid = 30 prompts x 2 (K/V) x 4 bits x 3 head-dim samples = 720 fault runs.",
+  "prompts": [
+    {
+      "id": "zh_ai_intro",
+      "text": "请用通俗易懂的语言，分点详细介绍人工智能的发展历史、主要技术分支（如机器学习、深度学习、强化学习）、当前的典型应用场景，以及未来可能面临的伦理和安全挑战。请尽量条理清晰、内容充实。"
+    },
+    {
+      "id": "zh_summary_task",
+      "text": "下面是一段关于城市交通治理的背景材料：随着城市化进程加快，机动车保有量持续上升，交通拥堵、尾气排放和停车难成为大城市普遍面临的问题。许多城市尝试通过限行、发展公共交通、建设智慧交通系统等方式缓解压力。请你总结这段材料的核心观点，并提出三条可行的改进建议。"
+    },
+    {
+      "id": "zh_reasoning",
+      "text": "一个水池有两个进水管和一个出水管。单开第一个进水管需要4小时注满，单开第二个进水管需要6小时注满，单开出水管需要3小时放空。如果三个管同时打开，请一步一步推理，计算水池是会被注满还是被放空，并给出所需的时间。"
+    },
+    {
+      "id": "en_code_explain",
+      "text": "Explain in detail what the following Python function does, analyze its time and space complexity, point out any potential bugs or edge cases, and suggest how to improve it: def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a"
+    },
+    {
+      "id": "en_long_instruction",
+      "text": "You are an experienced software architect. A startup wants to build a real-time chat application that must support one million concurrent users, message history, presence indicators, and end-to-end encryption. Describe a high-level system architecture, the main components, the data stores you would choose and why, how you would scale the system horizontally, and the main reliability and security trade-offs involved."
+    },
+    {
+      "id": "en_multi_step",
+      "text": "A train leaves city A at 9:00 AM traveling at 60 km/h toward city B, which is 300 km away. At the same time another train leaves city B toward city A at 90 km/h. Walk through the reasoning step by step to determine at what time and at what distance from city A the two trains meet."
+    },
+    {
+      "id": "zh_writing",
+      "text": "请以“时间的礼物”为题，写一篇不少于两百字的短文。要求围绕成长与陪伴的主题，语言优美，有具体的场景和细节描写，并在结尾自然地升华主题。"
+    },
+    {
+      "id": "en_knowledge",
+      "text": "Provide a comprehensive overview of how the greenhouse effect works: explain the physical mechanism, the main greenhouse gases and their sources, the difference between the natural and the enhanced greenhouse effect, and summarize the primary strategies humanity can use to mitigate climate change."
+    },
+    {
+      "id": "zh_history_ml",
+      "text": "请系统梳理机器学习的发展脉络：从早期的感知机与专家系统，到支持向量机等统计学习方法，再到深度神经网络的兴起，以及近年来大规模预训练模型的爆发。请说明每个阶段的代表性方法、关键突破、当时的局限，以及推动技术跃迁的核心因素，最后谈谈你对下一阶段可能方向的判断。"
+    },
+    {
+      "id": "zh_summary_energy",
+      "text": "下面是一段关于能源转型的背景材料：为应对气候变化，各国正加快从化石能源向可再生能源转型。风能和太阳能装机容量快速增长，但其发电具有间歇性，对电网稳定性提出挑战。储能技术、智能电网和需求侧管理被认为是重要的配套手段，同时核能是否应作为过渡方案仍存在争议。请概括这段材料的主要矛盾，并从技术、经济和政策三个角度分别提出应对思路。"
+    },
+    {
+      "id": "zh_reasoning_age",
+      "text": "小明今年的年龄是他妹妹的三倍，五年前小明的年龄是妹妹的五倍。请你一步一步设未知数、列方程并求解，算出小明和妹妹今年各自的年龄，并在最后验证你的答案是否同时满足题目给出的两个条件。"
+    },
+    {
+      "id": "zh_reasoning_logic",
+      "text": "有红、黄、蓝三个盒子，分别装着苹果、橘子和香蕉，每个盒子只装一种水果。已知：红盒子里不是苹果；黄盒子里不是橘子也不是苹果；蓝盒子里不是香蕉。请你用排除法一步一步推理，确定每个盒子里装的到底是哪种水果，并说明推理过程。"
+    },
+    {
+      "id": "en_reasoning_prob",
+      "text": "You roll two fair six-sided dice. Work through the problem step by step: first list how many total outcomes there are, then count the outcomes whose sum is exactly 8, then compute the probability of getting a sum of 8, and finally compute the probability of getting a sum that is greater than or equal to 10. Show your reasoning clearly at each stage."
+    },
+    {
+      "id": "en_code_explain_dedup",
+      "text": "Explain in detail what the following Python function does, walk through it on a concrete example input, analyze its time and space complexity, identify edge cases it fails to handle, and rewrite it to be more robust and idiomatic: def dedup(items):\n    result = []\n    for x in items:\n        if x not in result:\n            result.append(x)\n    return result"
+    },
+    {
+      "id": "en_code_explain_binsearch",
+      "text": "Here is a Python implementation of binary search. Explain the algorithm and its invariants, prove informally why it terminates, analyze the time complexity, point out the classic integer-overflow and off-by-one pitfalls, and describe how you would test it thoroughly: def search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1"
+    },
+    {
+      "id": "zh_sys_teacher",
+      "text": "你是一位耐心的高中物理老师，善于用生活中的例子解释抽象概念，并且总是循序渐进、避免直接给出答案而是引导学生思考。现在有一位学生问你：为什么冬天用手摸金属比摸木头感觉更冷，但它们其实处于同一个房间、温度应该相同？请你按照上述教学风格，详细解释其中的物理原理，并设计两个可以在家完成的小实验帮助学生加深理解。"
+    },
+    {
+      "id": "en_sys_reviewer",
+      "text": "You are a meticulous senior engineer performing a code review. You always explain the reasoning behind each suggestion, prioritize correctness and readability over cleverness, and are constructive rather than harsh. A junior developer submits a function that reads an entire file into memory, splits it into lines, and returns the number of lines containing a given keyword. Describe the concerns you would raise about memory usage, error handling, encoding, and testability, and propose a cleaner implementation along with the rationale for each change."
+    },
+    {
+      "id": "zh_summary_remote_work",
+      "text": "下面是一段关于远程办公的背景材料：疫情之后，远程办公在许多行业成为常态。支持者认为它节省通勤时间、扩大人才招聘范围、提升员工自主性；反对者则担心团队协作效率下降、企业文化被削弱、员工工作与生活界限模糊。也有公司采用混合办公模式作为折中。请总结这段材料中各方的核心立场，并针对一家中型科技公司，提出一套兼顾效率与员工满意度的办公制度设计建议。"
+    },
+    {
+      "id": "en_summary_open_source",
+      "text": "The following is background material about open-source software: open-source projects power much of the modern internet, from operating systems to web frameworks. They benefit from community contributions and transparency, but many critical projects are maintained by only a handful of unpaid volunteers, raising concerns about sustainability and security. Summarize the main tension described here, and propose three concrete mechanisms through which companies that depend on open source could help fund and sustain these projects."
+    },
+    {
+      "id": "zh_knowledge_immune",
+      "text": "请面向没有医学背景的普通读者，系统地介绍人体免疫系统的工作原理：包括先天免疫和适应性免疫的区别、白细胞与抗体分别扮演的角色、疫苗为什么能够预防疾病，以及为什么有时免疫系统会攻击自身而导致自身免疫疾病。请尽量用比喻帮助理解，并保持科学上的准确。"
+    },
+    {
+      "id": "en_knowledge_internet",
+      "text": "Give a clear, structured explanation of what happens, step by step, from the moment a user types a web address into a browser and presses Enter until the page is displayed. Cover DNS resolution, establishing a TCP connection, the TLS handshake, the HTTP request and response, and how the browser parses HTML, CSS and JavaScript to render the page. Explain each stage in enough detail that a motivated beginner could follow it."
+    },
+    {
+      "id": "zh_writing_letter",
+      "text": "请以一位即将大学毕业的学生的口吻，写一封写给十年后自己的信，字数不少于三百字。信中要回顾当下的迷茫与期待，谈谈现在最珍视的东西和最想坚持的原则，并向未来的自己提出几个真诚的问题。要求情感真挚、语言自然，避免空洞的口号。"
+    },
+    {
+      "id": "en_writing_story",
+      "text": "Write a short story of at least three hundred words about a lighthouse keeper who discovers a mysterious message in a bottle. The story should have a clear beginning, middle and end, include vivid sensory descriptions of the sea and the lighthouse, develop the keeper's inner emotions, and end with a subtle twist that makes the reader reconsider what came before."
+    },
+    {
+      "id": "zh_reasoning_work",
+      "text": "甲、乙两名工人合作完成一项工程需要12天。如果甲单独做需要20天完成，请你一步一步推理：先求出甲每天完成的工作量，再求出甲乙合作时每天的总工作量，进而求出乙单独完成整项工程需要多少天，最后验证你的结果是否与题目条件一致。"
+    },
+    {
+      "id": "en_reasoning_pricing",
+      "text": "A store buys a jacket for 80 dollars and marks it up by 50 percent to set the retail price. During a sale, the jacket is sold at 20 percent off the retail price. Reason through the problem step by step: compute the retail price, then the sale price, then the store's actual profit in dollars, and finally the profit as a percentage of the original cost. Show each calculation explicitly."
+    },
+    {
+      "id": "zh_summary_ai_edu",
+      "text": "下面是一段关于人工智能与教育的背景材料：生成式人工智能进入课堂后，学生可以借助它快速获得解题思路、润色写作、生成学习材料。支持者认为这能实现个性化学习、减轻教师负担；批评者担心学生产生依赖、削弱独立思考能力，并带来学术诚信问题。请概括这段材料中的主要争议点，并从学校、教师和学生三个层面分别提出合理使用人工智能工具的建议。"
+    },
+    {
+      "id": "en_sys_travel",
+      "text": "You are a knowledgeable and budget-conscious travel planner who always asks about constraints before recommending, respects the traveler's stated interests, and gives practical, actionable itineraries rather than generic tips. A traveler tells you they have five days in Japan in spring, a moderate budget, a strong interest in food and history, and a dislike of crowded tourist traps. Propose a detailed day-by-day itinerary, explain the reasoning behind each choice, and include realistic advice on transport, cost and timing."
+    },
+    {
+      "id": "zh_knowledge_blockchain",
+      "text": "请用通俗但准确的方式向一位没有技术背景的读者解释区块链的基本原理：包括什么是分布式账本、区块和哈希如何把数据链接起来、共识机制（如工作量证明）为什么能防止篡改，以及区块链除了加密货币之外还有哪些现实应用。请指出它常见的误解，并客观说明它的局限性。"
+    },
+    {
+      "id": "zh_summary_privacy",
+      "text": "下面是一段关于数据隐私的背景材料：移动应用和网站在提供便利的同时，也在大量收集用户的位置信息、浏览记录和消费习惯，用于精准广告和产品优化。用户往往在不完全知情的情况下同意了冗长的隐私条款。监管机构开始要求企业提高透明度并赋予用户更多控制权，但如何在数据利用与隐私保护之间取得平衡仍无定论。请总结材料的核心冲突，并从法律、技术和用户教育三方面提出改进建议。"
+    },
+    {
+      "id": "en_long_instruction_db",
+      "text": "You are a database consultant. A growing e-commerce company currently runs everything on a single relational database that is starting to struggle under heavy read and write load, especially during flash sales. Explain how you would diagnose the bottlenecks, then describe concrete strategies such as indexing, read replicas, caching, sharding and moving certain workloads to specialized stores. Discuss the trade-offs of each approach, the risks of premature optimization, and how you would roll out the changes safely without downtime."
+    }
+  ]
+}
