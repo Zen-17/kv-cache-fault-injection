@@ -110,6 +110,24 @@ An earlier injection corrupts a larger fraction of the remaining tokens
 (post-injection TDR 0.991 → 0.984 → 0.969), confirming that KV-cache errors
 propagate and amplify across decode steps rather than staying local.
 
+### 2 — OpenBookQA answer accuracy under bit flips (N=500, V-cache, layer 18)
+
+Extends 1A/1B from "did the tokens change?" to "did the model answer correctly?"
+on the OpenBookQA test set, comparing **direct** answering vs **chain-of-thought**
+(see [`EXP2_OPENBOOKQA.md`](EXP2_OPENBOOKQA.md) and
+[`experiments/results/exp2/analysis.md`](experiments/results/exp2/analysis.md)).
+
+| Scheme | clean | bit0 | bit7 | bit14 | bit15 |
+|---|---:|---:|---:|---:|---:|
+| direct | 0.858 | 0.858 | 0.858 | 0.858 | 0.858 |
+| cot | 0.916 | 0.912 | 0.922 | **0.002** | 0.926 |
+
+Direct answering is *immune* (the answer letter is the first decode token,
+produced from clean prefill KV), while a single bit-14 (exponent MSB) flip
+collapses chain-of-thought accuracy from 0.916 to 0.002 — the corrupted KV is
+re-read across hundreds of reasoning steps. Reasoning helps on a clean cache
+(+5.8 pts) but is the liability under an unprotected KV soft error.
+
 ## Conclusion
 
 Even a single BF16 bit flip in the KV cache can silently diverge or collapse

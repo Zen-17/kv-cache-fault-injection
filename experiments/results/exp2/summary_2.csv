@@ -1,0 +1,11 @@
+scheme,condition,correct,total,accuracy,unparsed
+cot,clean,458,500,0.9160,4
+cot,bit0,456,500,0.9120,2
+cot,bit7,461,500,0.9220,3
+cot,bit14,1,500,0.0020,499
+cot,bit15,463,500,0.9260,1
+direct,clean,429,500,0.8580,0
+direct,bit0,429,500,0.8580,0
+direct,bit7,429,500,0.8580,0
+direct,bit14,429,500,0.8580,0
+direct,bit15,429,500,0.8580,0

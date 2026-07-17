@@ -3,3 +3,5 @@
 *.pyc
 __pycache__/
 .DS_Store
+# Orchestrator completion marker (not a result).
+experiments/results/**/DONE
